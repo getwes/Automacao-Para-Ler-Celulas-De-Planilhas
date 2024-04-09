@@ -6,3 +6,4 @@ from docx import Document
 from datetime import datetime
 
 planilha_fornecedores = load_workbook('./fornecedores.xlsx')
+planilha_fornecedores['sheet1']
