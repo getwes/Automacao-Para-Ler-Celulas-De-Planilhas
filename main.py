@@ -9,4 +9,4 @@ planilha_fornecedores = load_workbook('./fornecedores.xlsx')
 pagina_fornecedores = planilha_fornecedores['Sheet1']
 
 for linha in pagina_fornecedores.iter_rows(min_row=2,values_only=True):
-    print(linha)
+    nome_empresa, endereco,cidade, estado, cep, telefone, email, setor = linha #unpacking
