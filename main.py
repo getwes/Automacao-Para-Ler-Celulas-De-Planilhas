@@ -16,7 +16,7 @@ for linha in pagina_fornecedores.iter_rows(min_row=2,values_only=True):
 
     texto_contrato = f"""
      Este contrato de prestação de serviços é feito entre {nome_empresa}, com endereço em {endereco}, 
-    {cidade}, [ESTADO], CEP [CEP], doravante denominado FORNECEDOR, e a empresa CONTRATANTE.
+    {cidade}, {estado}, CEP {cep}, doravante denominado FORNECEDOR, e a empresa CONTRATANTE.
 
     Pelo presente instrumento particular, as partes têm, entre si, justo e acordado o seguinte:
 
@@ -34,12 +34,16 @@ for linha in pagina_fornecedores.iter_rows(min_row=2,values_only=True):
 
     Para firmeza e como prova de assim haverem justo e contratado, as partes assinam o presente contrato em duas vias de igual teor e forma.
 
-    FORNECEDOR: [NOME FORNECEDOR]
-    E-mail: [E-MAIL PRESTADOR]
+    FORNECEDOR: {nome_empresa}
+    E-mail: {email}
 
     CONTRATANTE: sampa ltda
     E-mail: sampaltda_123@gmail.com
 
-    [CIDADE],[DATA]
+    são paulo,{datetime.now().strftime('%d/%m/%Y')}
 
     """
+    #salvar arquivo word em uma pasta especifica(contratos)
+    arquivo_word.add_paragraph(texto_contrato)
+
+    arquivo_word.save(f'./contratos/contrato_{nome_empresa}.docx')
